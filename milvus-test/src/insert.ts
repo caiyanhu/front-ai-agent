@@ -1,12 +1,5 @@
-import { ChatDeepSeek } from '@langchain/deepseek';
 import { OllamaEmbeddings } from '@langchain/ollama';
-import 'dotenv/config';
 import { DataType, IndexType, MetricType, MilvusClient } from '@zilliz/milvus2-sdk-node';
-
-const model = new ChatDeepSeek({
-  model: 'deepseek-chat',
-  apiKey: process.env.DEEPSEEK_API_KEY,
-});
 
 const COLLECTION_NAME = 'ai_diary';
 const VECTOR_DIM = 1024;
@@ -118,8 +111,8 @@ async function main() {
       data: diaryData,
     });
     console.log(`✓ Inserted ${insertResult.insert_cnt} records\n`);
-  } catch (error) {
-    console.error('Error:', error.message);
+  } catch (error: unknown) {
+    console.error('Error:', error instanceof Error ? error.message : String(error));
   }
 }
 

@@ -49,13 +49,6 @@ async function runAgentWithTools(query: string, maxIterations = 30) {
       if (foundTool) {
         const toolResult = await foundTool.invoke(toolCall.args);
 
-        let contentStr;
-        if (typeof toolResult === 'string') {
-          contentStr = toolResult;
-        } else if (toolResult && toolResult.text) {
-          contentStr = toolResult.text;
-        }
-
         messages.push(
           new ToolMessage({
             content: toolResult,
