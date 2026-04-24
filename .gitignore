@@ -13,14 +13,30 @@ pnpm-lock.yaml
 # Build outputs
 dist/
 build/
+.out/
+.output/
 .next/
+.nuxt/
+.svelte-kit/
 out/
 *.tsbuildinfo
+*.js.map
+*.d.ts.map
+
+# TypeScript declaration emit (if using declaration: true)
+*.d.ts
+!types/**/*.d.ts
 
 # Environment variables
 .env
 .env.local
 .env.*.local
+.env.development
+.env.test
+.env.production
+
+# Local config overrides
+*.local
 
 # Logs
 logs/
@@ -34,16 +50,21 @@ lerna-debug.log*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*~
 
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Testing
 coverage/
@@ -54,7 +75,54 @@ coverage/
 .parcel-cache/
 .eslintcache
 .stylelintcache
+.vite/
+.turbo/
 
 # Temporary files
 *.tmp
 *.temp
+*.pid
+*.seed
+*.pid.lock
+
+# AI / ML model files & local vector stores
+*.bin
+*.gguf
+*.onnx
+*.pt
+*.pth
+*.safetensors
+*.h5
+*.pb
+models/
+embeddings/
+vector_store/
+.vector_store/
+chroma_db/
+.chroma/
+
+# Local databases
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+
+# Playwright / E2E testing
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Storybook
+storybook-static/
+
+# Vercel / Netlify / Cloudflare
+.vercel/
+.netlify/
+.wrangler/
+
+# Milvus data volumes
+milvus-test/volumes/
+
+# Misc
+*.tgz
+*.tar.gz
